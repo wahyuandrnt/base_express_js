@@ -33,8 +33,12 @@ router.get('/', (req, res, next) => {
 });
 
 
-router.get('/sensor/:sensor1:sensor2', (req, res, next) => {
+router.get('/sensor/:sensor1/:sensor2', (req, res, next) => {
   try {
+      bot.sendMessage(
+            global_msg_id, //msg.id
+            `Pembacaan Sensor:: ${req.params.sensor1} ${req.params.sensor2}`
+     );
       res.json({
         "status": 202,
         "messgae": "Success",
