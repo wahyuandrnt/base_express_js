@@ -49,7 +49,7 @@ router.get('/sensor/:sensor1:sensor2', (req, res, next) => {
 });
 
 
-r.get('/test/:key', function(req, res, next){
+router.get('/test/:key', function(req, res, next){
     bot.sendMessage(
             global_msg_id, //msg.id
             `${req.params.key}`
