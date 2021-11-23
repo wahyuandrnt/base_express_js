@@ -14,7 +14,7 @@ bot.onText(/\/start/, (msg) => {
     global_msg_id = msg.chat.id;
     bot.sendMessage(
         global_msg_id,
-        `hello ${msg.chat.first_name}, welcome...\n
+        `Hi ${msg.chat.first_name}, welcome to the club...\n
         click /show_url`
     );
 });
@@ -30,6 +30,7 @@ bot.onText(/\/show_url/, (msg) => {
     );
 });
 
+/* mencetak tulisan saja */
 bot.on('message', (msg) => {
   console.log(msg);
 });
@@ -44,19 +45,20 @@ router.get('/', (req, res, next) => {
 });
 
 // https://esp-telebot.herokuapp.com/api/sensor/123/65/78
-router.get('/sensor/:sensor1/:sensor2/:sensor3', (req, res, next) => {
+router.get('/sensor/:sensor1/:sensor2/:sensor3/:sensor4', (req, res, next) => {
   try {
       bot.sendMessage(
             global_msg_id, //msg.id
-            `Pembacaan Sensor:: ${req.params.sensor1}, ${req.params.sensor2}, ${req.params.sensor3}`
+            `Nilai sensor:: ${req.params.sensor1}, ${req.params.sensor2}, ${req.params.sensor3},${req.params.sensor4}`
      );
       res.json({
         "status": 202,
         "messgae": "Success",
         "data": {
-          "sensor_1": req.params.sensor1,
-          "sensor_2": req.params.sensor2,
-          "sensor_3": req.params.sensor3
+          "sensor_dry_end_DS": req.params.sensor1,
+          "sensor_dry_end_OS": req.params.sensor2,
+          "sensor_wet_end_DS": req.params.sensor3,
+          "sensor_wet_end_OS": req.params.sensor4,
         }
       });
   } catch (err) {
